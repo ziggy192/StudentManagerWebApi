@@ -5,7 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using StudentManagerDataAccess;
 using StudentMangerWebApi.Models.DTO;
+using ClassDetail = StudentMangerWebApi.Models.ClassDetail;
 
 namespace StudentMangerWebApi.Controllers
 {
@@ -46,58 +48,118 @@ namespace StudentMangerWebApi.Controllers
 
         public IHttpActionResult GetAllSlotRequestedsByStudentId(int id)
         {
-            var slotRequestedList = slotRequestedmodels.Where(model => model.StudentId == id).ToList();
+            WebAdminDBEntities db = new WebAdminDBEntities();
 
-            return Ok(slotRequestedList);
+            var results = db.ClassRequests.Where(request => request.StudentId == id).ToList();
+            return Ok(results.Select(model => new SlotRequestedModel()
+            {
+                Id = model.ClassRequestId,
+                StudentId = model.StudentId.GetValueOrDefault(4),
+                State = transState(model.State.GetValueOrDefault(0)),
+                ClassDetail = new ClassDetail()
+                {
+                    ClassDetailId = model.ClassDetailId.GetValueOrDefault(4),
+                    ClassName = model.ClassDetail.ClassName,
+                    RoomName = model.ClassDetail.Room.Name,
+                    SubjectName = model.ClassDetail.Subject.Name,
+                    TeacherName = model.ClassDetail.Teacher.Name,
+                    TimeSlotModels = model.ClassDetail.ClassDetailSlots.ToList().Select(
+                        timeslot => new ClassSlotModel()
+                        {
+                            Id = timeslot.ClassDetailSlotId,
+                            ClassDetailId = model.ClassDetail.ClassDetailId,
+                            Date = timeslot.DayOfWeek,
+                            Time = ClassSlotModel.getTime(timeslot.StartTime.GetValueOrDefault()
+                                , timeslot.EndTime.GetValueOrDefault())
+                        }).ToList()
+                }
+            }));
+
+//            var slotRequestedList = slotRequestedmodels.Where(model => model.StudentId == id).ToList();
+//
+//            return Ok(slotRequestedList);
+
         }
-
-        private static bool checkStudentId(int studentId)
+        
+        private static string transState(int state)
         {
-            return true;
+            switch (state)
+            {
+                case 0:
+                    return SlotRequestedModel.WAITING_STATE;
+                case 1:
+                    return SlotRequestedModel.ACCEPTED_STATE;
+                default:
+                    return SlotRequestedModel.DENIED_STATE;
+            }
         }
+      
 
-        private static bool checkClassDetailID(int classId)
-        {
-            return true;
-        }
-
+        
         public IHttpActionResult PostFormRequestByStudentId(int id, SlotRequestPostDTO slotRequestPostDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            WebAdminDBEntities db = new WebAdminDBEntities();
+            int maxId = db.ClassRequests.Max(m => m.ClassRequestId);
+            maxId++;
+            db.ClassRequests.Add(
+                new ClassRequest()
+                {
+                    ClassRequestId = maxId,
+                    ClassDetailId = slotRequestPostDto.ClassDetailId,
+                    StudentId = id
+                    ,State = 0
+                });
+            db.SaveChanges();
 
-            //check student id
-            if (!checkStudentId(id))
+
+            var model = db.ClassRequests.OrderByDescending(p => p.ClassDetailId).FirstOrDefault();
+
+            return Ok(new SlotRequestedModel()
             {
-                return BadRequest();
-            }
-
-            //check class detailId
-            if (!checkClassDetailID(slotRequestPostDto.ClassDetailId))
-            {
-                return BadRequest();
-            }
-
+                Id = model.ClassRequestId,
+                StudentId = model.StudentId.GetValueOrDefault(4),
+                State = transState(model.State.GetValueOrDefault(0)),
+                ClassDetail = new ClassDetail()
+                {
+                    ClassDetailId = model.ClassDetailId.GetValueOrDefault(4),
+                    ClassName = model.ClassDetail.ClassName,
+                    RoomName = model.ClassDetail.Room.Name,
+                    SubjectName = model.ClassDetail.Subject.Name,
+                    TeacherName = model.ClassDetail.Teacher.Name,
+                    TimeSlotModels = model.ClassDetail.ClassDetailSlots.ToList().Select(
+                        timeslot => new ClassSlotModel()
+                        {
+                            Id = timeslot.ClassDetailSlotId,
+                            ClassDetailId = model.ClassDetail.ClassDetailId,
+                            Date = timeslot.DayOfWeek,
+                            Time = ClassSlotModel.getTime(timeslot.StartTime.GetValueOrDefault()
+                            ,timeslot.EndTime.GetValueOrDefault())
+                                
+                        }).ToList()
+                },
+            });
             //todo add to database
-            var dummyClassDetail = ClassDetailsController.classDetailList[0];
-
-
-            var slotRequestedModel = new SlotRequestedModel()
-            {
-                Id = 10,
-                ClassDetail = dummyClassDetail,
-                State = SlotRequestedModel.WAITING_STATE,
-                StudentId = id
-            };
-
-            //todo change id here
-            slotRequestedmodels.Add(slotRequestedModel);
-
-
-
-            return Ok(slotRequestedmodels);
+//            var dummyClassDetail = ClassDetailsController.classDetailList[0];
+//
+//
+//            var slotRequestedModel = new SlotRequestedModel()
+//            {
+//                Id = 10,
+//                ClassDetail = dummyClassDetail,
+//                State = SlotRequestedModel.WAITING_STATE,
+//                StudentId = id
+//            };
+//
+//            //todo change id here
+//            slotRequestedmodels.Add(slotRequestedModel);
+//
+//
+//
+//            return Ok(slotRequestedmodels);
         }
     }
 }

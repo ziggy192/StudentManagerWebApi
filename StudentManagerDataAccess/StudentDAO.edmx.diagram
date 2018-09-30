@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="968a443616a24a76816aa3a21b69b616" Name="Diagram1">
+        <EntityTypeShape EntityType="WebAdminDBModel.Account" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.AccountStudent" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.ClassDetail" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.ClassDetailSlot" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.ClassDetailStudent" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.ClassRequest" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.Room" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.Student" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.Subject" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebAdminDBModel.Teacher" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="WebAdminDBModel.FKguk9lk5g3witx97fu6yg8r6im" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FKfb102o60i3kkte7fcnqndktjs" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FK14gccupjlyjovy3j1fa7lls5n" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FKd7yuhk8myhtl5gvshtancyum3" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FKghibjam3bthgvjkfapj6o9vgd" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FKhx29ex66klso6qqeq4ng7rbak" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FKik5i7geggih0la1uan1tik5pp" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FKoefoudnlivpvfxedu6qd10wp9" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FKkygr71furjxyd13msihlers7g" ManuallyRouted="false" />
+        <AssociationConnector Association="WebAdminDBModel.FK201uawpwaty9wgei4vp6l08hj" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

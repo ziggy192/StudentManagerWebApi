@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebAdminDBModelStoreContainer" CdmEntityContainer="WebAdminDBEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="WebAdminDBModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AuthorizationLevel" ColumnName="AuthorizationLevel" />
+          <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountStudents">
+      <EntityTypeMapping TypeName="WebAdminDBModel.AccountStudent">
+        <MappingFragment StoreEntitySet="AccountStudent">
+          <ScalarProperty Name="AccountStudentId" ColumnName="AccountStudentId" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassDetails">
+      <EntityTypeMapping TypeName="WebAdminDBModel.ClassDetail">
+        <MappingFragment StoreEntitySet="ClassDetail">
+          <ScalarProperty Name="ClassDetailId" ColumnName="ClassDetailId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassDetailSlots">
+      <EntityTypeMapping TypeName="WebAdminDBModel.ClassDetailSlot">
+        <MappingFragment StoreEntitySet="ClassDetailSlot">
+          <ScalarProperty Name="ClassDetailSlotId" ColumnName="ClassDetailSlotId" />
+          <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="ClassDetailId" ColumnName="ClassDetailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassDetailStudents">
+      <EntityTypeMapping TypeName="WebAdminDBModel.ClassDetailStudent">
+        <MappingFragment StoreEntitySet="ClassDetailStudent">
+          <ScalarProperty Name="ClassDetailStudentId" ColumnName="ClassDetailStudentId" />
+          <ScalarProperty Name="ClassDetailId" ColumnName="ClassDetailId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassRequests">
+      <EntityTypeMapping TypeName="WebAdminDBModel.ClassRequest">
+        <MappingFragment StoreEntitySet="ClassRequest">
+          <ScalarProperty Name="ClassRequestId" ColumnName="ClassRequestId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ClassDetailId" ColumnName="ClassDetailId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="WebAdminDBModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="WebAdminDBModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="IsMale" ColumnName="IsMale" />
+          <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParrentPhone" ColumnName="ParrentPhone" />
+          <ScalarProperty Name="StartingDay" ColumnName="StartingDay" />
+          <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+          <ScalarProperty Name="TuitionFee" ColumnName="TuitionFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="WebAdminDBModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="WebAdminDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="WebAdminDBModel.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TeacherPhoneNumber" ColumnName="TeacherPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

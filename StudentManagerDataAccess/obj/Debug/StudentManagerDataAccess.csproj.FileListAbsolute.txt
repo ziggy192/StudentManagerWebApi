@@ -1,0 +1,12 @@
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\bin\Debug\StudentManagerDataAccess.dll.config
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\bin\Debug\StudentManagerDataAccess.dll
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\bin\Debug\StudentManagerDataAccess.pdb
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\bin\Debug\EntityFramework.dll
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\bin\Debug\EntityFramework.xml
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\obj\Debug\StudentManagerDataAccess.csprojResolveAssemblyReference.cache
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\obj\Debug\StudentManagerDataAccess.csproj.CoreCompileInputs.cache
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\obj\Debug\StudentManagerDataAccess.csproj.CopyComplete
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\obj\Debug\StudentManagerDataAccess.dll
+E:\Code\DotNet\StudentMangerWebApi\StudentManagerDataAccess\obj\Debug\StudentManagerDataAccess.pdb

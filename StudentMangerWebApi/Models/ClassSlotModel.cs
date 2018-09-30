@@ -21,5 +21,14 @@ namespace StudentMangerWebApi.Models
             return list;
         }
 
+        public static string getTime(TimeSpan startTime, TimeSpan endTime)
+        {
+            var date = new DateTime(1,1,1,0,0,0);
+            var start = date + startTime;
+            var end = date + endTime;
+
+            return start.ToString("hh:mmtt") + " - " + end.ToString("hh:mmtt");
+
+        }
     }
 }

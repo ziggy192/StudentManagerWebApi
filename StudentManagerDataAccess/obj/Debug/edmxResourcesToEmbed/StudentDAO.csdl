@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebAdminDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuthorizationLevel" Type="Int32" />
+    <Property Name="HashedPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Salt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AccountStudents" Relationship="Self.FKguk9lk5g3witx97fu6yg8r6im" FromRole="Account" ToRole="AccountStudent" />
+  </EntityType>
+  <EntityType Name="AccountStudent">
+    <Key>
+      <PropertyRef Name="AccountStudentId" />
+    </Key>
+    <Property Name="AccountStudentId" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StudentId" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FKguk9lk5g3witx97fu6yg8r6im" FromRole="AccountStudent" ToRole="Account" />
+    <NavigationProperty Name="Student" Relationship="Self.FKfb102o60i3kkte7fcnqndktjs" FromRole="AccountStudent" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="ClassDetail">
+    <Key>
+      <PropertyRef Name="ClassDetailId" />
+    </Key>
+    <Property Name="ClassDetailId" Type="Int32" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="TeacherId" Type="Int32" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK14gccupjlyjovy3j1fa7lls5n" FromRole="ClassDetail" ToRole="Teacher" />
+    <NavigationProperty Name="Room" Relationship="Self.FKd7yuhk8myhtl5gvshtancyum3" FromRole="ClassDetail" ToRole="Room" />
+    <NavigationProperty Name="Subject" Relationship="Self.FKghibjam3bthgvjkfapj6o9vgd" FromRole="ClassDetail" ToRole="Subject" />
+    <NavigationProperty Name="ClassDetailSlots" Relationship="Self.FKhx29ex66klso6qqeq4ng7rbak" FromRole="ClassDetail" ToRole="ClassDetailSlot" />
+    <NavigationProperty Name="ClassDetailStudents" Relationship="Self.FKik5i7geggih0la1uan1tik5pp" FromRole="ClassDetail" ToRole="ClassDetailStudent" />
+    <NavigationProperty Name="ClassRequests" Relationship="Self.FKoefoudnlivpvfxedu6qd10wp9" FromRole="ClassDetail" ToRole="ClassRequest" />
+  </EntityType>
+  <EntityType Name="ClassDetailSlot">
+    <Key>
+      <PropertyRef Name="ClassDetailSlotId" />
+    </Key>
+    <Property Name="ClassDetailSlotId" Type="Int32" Nullable="false" />
+    <Property Name="DayOfWeek" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EndTime" Type="Time" Precision="7" />
+    <Property Name="StartTime" Type="Time" Precision="7" />
+    <Property Name="ClassDetailId" Type="Int32" />
+    <NavigationProperty Name="ClassDetail" Relationship="Self.FKhx29ex66klso6qqeq4ng7rbak" FromRole="ClassDetailSlot" ToRole="ClassDetail" />
+  </EntityType>
+  <EntityType Name="ClassDetailStudent">
+    <Key>
+      <PropertyRef Name="ClassDetailStudentId" />
+    </Key>
+    <Property Name="ClassDetailStudentId" Type="Int32" Nullable="false" />
+    <Property Name="ClassDetailId" Type="Int32" />
+    <Property Name="StudentId" Type="Int32" />
+    <NavigationProperty Name="ClassDetail" Relationship="Self.FKik5i7geggih0la1uan1tik5pp" FromRole="ClassDetailStudent" ToRole="ClassDetail" />
+    <NavigationProperty Name="Student" Relationship="Self.FKkygr71furjxyd13msihlers7g" FromRole="ClassDetailStudent" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="ClassRequest">
+    <Key>
+      <PropertyRef Name="ClassRequestId" />
+    </Key>
+    <Property Name="ClassRequestId" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="ClassDetailId" Type="Int32" />
+    <Property Name="StudentId" Type="Int32" />
+    <NavigationProperty Name="ClassDetail" Relationship="Self.FKoefoudnlivpvfxedu6qd10wp9" FromRole="ClassRequest" ToRole="ClassDetail" />
+    <NavigationProperty Name="Student" Relationship="Self.FK201uawpwaty9wgei4vp6l08hj" FromRole="ClassRequest" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClassDetails" Relationship="Self.FKd7yuhk8myhtl5gvshtancyum3" FromRole="Room" ToRole="ClassDetail" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
+    <Property Name="Grade" Type="Int32" />
+    <Property Name="IsMale" Type="Boolean" />
+    <Property Name="IsPaid" Type="Boolean" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParrentPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StartingDay" Type="DateTime" Precision="7" />
+    <Property Name="StudentPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TuitionFee" Type="Int32" />
+    <NavigationProperty Name="AccountStudents" Relationship="Self.FKfb102o60i3kkte7fcnqndktjs" FromRole="Student" ToRole="AccountStudent" />
+    <NavigationProperty Name="ClassDetailStudents" Relationship="Self.FKkygr71furjxyd13msihlers7g" FromRole="Student" ToRole="ClassDetailStudent" />
+    <NavigationProperty Name="ClassRequests" Relationship="Self.FK201uawpwaty9wgei4vp6l08hj" FromRole="Student" ToRole="ClassRequest" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectID" />
+    </Key>
+    <Property Name="SubjectID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClassDetails" Relationship="Self.FKghibjam3bthgvjkfapj6o9vgd" FromRole="Subject" ToRole="ClassDetail" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TeacherPhoneNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClassDetails" Relationship="Self.FK14gccupjlyjovy3j1fa7lls5n" FromRole="Teacher" ToRole="ClassDetail" />
+  </EntityType>
+  <Association Name="FKguk9lk5g3witx97fu6yg8r6im">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="AccountStudent" Type="Self.AccountStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AccountStudent">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKfb102o60i3kkte7fcnqndktjs">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="AccountStudent" Type="Self.AccountStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="AccountStudent">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK14gccupjlyjovy3j1fa7lls5n">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="ClassDetail" Type="Self.ClassDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="TeacherID" />
+      </Principal>
+      <Dependent Role="ClassDetail">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKd7yuhk8myhtl5gvshtancyum3">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="ClassDetail" Type="Self.ClassDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="ClassDetail">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKghibjam3bthgvjkfapj6o9vgd">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="ClassDetail" Type="Self.ClassDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="ClassDetail">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKhx29ex66klso6qqeq4ng7rbak">
+    <End Role="ClassDetail" Type="Self.ClassDetail" Multiplicity="0..1" />
+    <End Role="ClassDetailSlot" Type="Self.ClassDetailSlot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassDetail">
+        <PropertyRef Name="ClassDetailId" />
+      </Principal>
+      <Dependent Role="ClassDetailSlot">
+        <PropertyRef Name="ClassDetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKik5i7geggih0la1uan1tik5pp">
+    <End Role="ClassDetail" Type="Self.ClassDetail" Multiplicity="0..1" />
+    <End Role="ClassDetailStudent" Type="Self.ClassDetailStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassDetail">
+        <PropertyRef Name="ClassDetailId" />
+      </Principal>
+      <Dependent Role="ClassDetailStudent">
+        <PropertyRef Name="ClassDetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKoefoudnlivpvfxedu6qd10wp9">
+    <End Role="ClassDetail" Type="Self.ClassDetail" Multiplicity="0..1" />
+    <End Role="ClassRequest" Type="Self.ClassRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassDetail">
+        <PropertyRef Name="ClassDetailId" />
+      </Principal>
+      <Dependent Role="ClassRequest">
+        <PropertyRef Name="ClassDetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKkygr71furjxyd13msihlers7g">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="ClassDetailStudent" Type="Self.ClassDetailStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="ClassDetailStudent">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK201uawpwaty9wgei4vp6l08hj">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="ClassRequest" Type="Self.ClassRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="ClassRequest">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebAdminDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="AccountStudents" EntityType="Self.AccountStudent" />
+    <EntitySet Name="ClassDetails" EntityType="Self.ClassDetail" />
+    <EntitySet Name="ClassDetailSlots" EntityType="Self.ClassDetailSlot" />
+    <EntitySet Name="ClassDetailStudents" EntityType="Self.ClassDetailStudent" />
+    <EntitySet Name="ClassRequests" EntityType="Self.ClassRequest" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <AssociationSet Name="FKguk9lk5g3witx97fu6yg8r6im" Association="Self.FKguk9lk5g3witx97fu6yg8r6im">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="AccountStudent" EntitySet="AccountStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FKfb102o60i3kkte7fcnqndktjs" Association="Self.FKfb102o60i3kkte7fcnqndktjs">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="AccountStudent" EntitySet="AccountStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK14gccupjlyjovy3j1fa7lls5n" Association="Self.FK14gccupjlyjovy3j1fa7lls5n">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="ClassDetail" EntitySet="ClassDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FKd7yuhk8myhtl5gvshtancyum3" Association="Self.FKd7yuhk8myhtl5gvshtancyum3">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="ClassDetail" EntitySet="ClassDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FKghibjam3bthgvjkfapj6o9vgd" Association="Self.FKghibjam3bthgvjkfapj6o9vgd">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="ClassDetail" EntitySet="ClassDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FKhx29ex66klso6qqeq4ng7rbak" Association="Self.FKhx29ex66klso6qqeq4ng7rbak">
+      <End Role="ClassDetail" EntitySet="ClassDetails" />
+      <End Role="ClassDetailSlot" EntitySet="ClassDetailSlots" />
+    </AssociationSet>
+    <AssociationSet Name="FKik5i7geggih0la1uan1tik5pp" Association="Self.FKik5i7geggih0la1uan1tik5pp">
+      <End Role="ClassDetail" EntitySet="ClassDetails" />
+      <End Role="ClassDetailStudent" EntitySet="ClassDetailStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FKoefoudnlivpvfxedu6qd10wp9" Association="Self.FKoefoudnlivpvfxedu6qd10wp9">
+      <End Role="ClassDetail" EntitySet="ClassDetails" />
+      <End Role="ClassRequest" EntitySet="ClassRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FKkygr71furjxyd13msihlers7g" Association="Self.FKkygr71furjxyd13msihlers7g">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="ClassDetailStudent" EntitySet="ClassDetailStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK201uawpwaty9wgei4vp6l08hj" Association="Self.FK201uawpwaty9wgei4vp6l08hj">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="ClassRequest" EntitySet="ClassRequests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

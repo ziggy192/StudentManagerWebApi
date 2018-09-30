@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using StudentMangerWebApi.Models;
+using StudentManagerDataAccess;
+using Subject = StudentMangerWebApi.Models.Subject;
 
 namespace StudentMangerWebApi.Controllers
 {
@@ -21,16 +22,17 @@ namespace StudentMangerWebApi.Controllers
         };
         public IEnumerable<Subject> GetAllSubjects()
         {
-            return subjects;
+            WebAdminDBEntities dbContext = new WebAdminDBEntities();
+            return dbContext.Subjects.Select(
+                model => new Subject()
+                {
+                    SubjectId = model.SubjectID
+                    ,SubjectName = model.Name
+                });
+
         }
 
-        [Route("{subjectId}/classDetails")]
-        public IEnumerable<ClassDetail> GetClassDetailsBySubjectId(int subjectId)
-        {
-
-            //todo get classDetails by subjectId from database 
-            return ClassDetailsController.classDetailList;
-        }
+       
 
     }
 }

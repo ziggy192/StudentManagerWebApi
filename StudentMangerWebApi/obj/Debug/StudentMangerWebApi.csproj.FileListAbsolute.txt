@@ -95,3 +95,10 @@ E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\obj\Debug\StudentMangerWe
 E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\obj\Debug\StudentMangerWebApi.csproj.CopyComplete
 E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\obj\Debug\StudentMangerWebApi.dll
 E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\obj\Debug\StudentMangerWebApi.pdb
+E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\bin\EntityFramework.dll
+E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\bin\EntityFramework.SqlServer.dll
+E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\bin\StudentManagerDataAccess.dll
+E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\bin\StudentManagerDataAccess.pdb
+E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\bin\StudentManagerDataAccess.dll.config
+E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\bin\EntityFramework.xml
+E:\Code\DotNet\StudentMangerWebApi\StudentMangerWebApi\bin\EntityFramework.SqlServer.xml

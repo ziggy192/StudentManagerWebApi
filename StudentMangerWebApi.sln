@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentMangerWebApi", "StudentMangerWebApi\StudentMangerWebApi.csproj", "{9AE82FC1-962A-495E-9344-8C13C80C72B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagerDataAccess", "StudentManagerDataAccess\StudentManagerDataAccess.csproj", "{C05B3DAF-BDB9-4927-A9E4-7D1F0AE4A4F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9AE82FC1-962A-495E-9344-8C13C80C72B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AE82FC1-962A-495E-9344-8C13C80C72B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AE82FC1-962A-495E-9344-8C13C80C72B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C05B3DAF-BDB9-4927-A9E4-7D1F0AE4A4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C05B3DAF-BDB9-4927-A9E4-7D1F0AE4A4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C05B3DAF-BDB9-4927-A9E4-7D1F0AE4A4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C05B3DAF-BDB9-4927-A9E4-7D1F0AE4A4F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
